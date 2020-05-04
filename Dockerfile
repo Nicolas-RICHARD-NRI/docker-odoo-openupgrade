@@ -42,9 +42,10 @@ RUN set -x; \
         && cp -r wkhtmltox/share/man/man1 /usr/local/share/man/ \
         && rm -rf /var/lib/apt/lists/
 
+COPY ./openupgrade_sources/requirements.txt /
+RUN pip3 install -r requirements.txt
 
 COPY ./openupgrade_sources /var/lib/odoo
-RUN pip3 install -r /var/lib/odoo/requirements.txt
 
 COPY ./specifics /var/lib/odoo/dev-addons
 COPY ./odoo.conf.template /etc/odoo/
