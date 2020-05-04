@@ -41,12 +41,12 @@ RUN set -x; \
         && cp wkhtmltox/bin/* /usr/local/bin/ \
         && cp -r wkhtmltox/share/man/man1 /usr/local/share/man/ \
         && rm -rf /var/lib/apt/lists/
- 
-COPY ./requirements.txt /
 
-RUN pip3 install -r requirements.txt
-RUN pip3 install --ignore-installed git+https://github.com/OCA/openupgradelib.git@master
 
+COPY ./openupgrade_sources /var/lib/odoo
+RUN pip3 install -r /var/lib/odoo/requirements.txt
+
+COPY ./specifics /var/lib/odoo/dev-addons
 COPY ./odoo.conf.template /etc/odoo/
 COPY ./entrypoint.sh /
 
