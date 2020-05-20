@@ -47,7 +47,7 @@ RUN pip3 install -r requirements.txt
 
 COPY ./openupgrade_sources /var/lib/odoo
 
-COPY ./specifics /var/lib/odoo/dev-addons
+COPY ./specifics /var/lib/odoo/extra-addons
 COPY ./odoo.conf.template /etc/odoo/
 COPY ./entrypoint.sh /
 
